@@ -36,9 +36,9 @@ const AppNavigation: FC = () => {
                 initialRouteName={ROUTES.MAIN}
                 screenOptions={{
                     headerStyle: {
-                        backgroundColor: Platform.OS === 'android' ? THEME.MAIN_COLOR : THEME.WHITE_COLOR
+                        backgroundColor: Platform.OS === 'android' ? THEME.COLOR_MAIN : THEME.COLOR_WHITE
                     },
-                    headerTintColor: Platform.OS === 'android' ? THEME.WHITE_COLOR : THEME.MAIN_COLOR
+                    headerTintColor: Platform.OS === 'android' ? THEME.COLOR_WHITE : THEME.COLOR_MAIN
                 }}
             >
                 <Stack.Screen name={ROUTES.MAIN} component={MainScreen} options={{ title: 'My blog' }} />
