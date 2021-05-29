@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { FC, useState } from 'react';
+import { Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
+
+async function loadApplication() {
+    await Font.loadAsync({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        'openSans-regular': require('./assets/fonts/OpenSans-Regular.ttf'),
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        'openSans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
+    });
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App: FC = () => {
+    const [isReady, setIsReady] = useState(false);
+
+    if (!isReady) {
+        return <AppLoading startAsync={loadApplication} onError={console.log} onFinish={() => setIsReady(true)} />;
+    }
+
+    return (
+        <View>
+            <Text>Open up App.tsx to start working on your app!</Text>
+        </View>
+    );
+};
+
+export default App;
