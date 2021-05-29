@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import { Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading';
 
 import bootstrap from './src/bootstrap';
+import AppNavigation from './src/Navigation/AppNavigation';
 
 const App: FC = () => {
     const [isReady, setIsReady] = useState(false);
@@ -12,9 +12,7 @@ const App: FC = () => {
     }
 
     return (
-        <View>
-            <Text>Open up App.tsx to start working on your app!</Text>
-        </View>
+        <AppNavigation />
     );
 };
 
