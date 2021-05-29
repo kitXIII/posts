@@ -1,10 +1,16 @@
 import React, { FC } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const PostScreen: FC = () => {
+import { ROUTES } from '../routes';
+import type { ScreenNavigationProps } from '../Navigation/AppNavigation';
+
+type Props = ScreenNavigationProps<ROUTES.POST>;
+
+const PostScreen: FC<Props> = ({ route }: Props) => {
+    const { postId } = route.params;
     return (
         <View style={styles.center}>
-            <Text>PostScreen</Text>
+            <Text>{postId}</Text>
         </View>
     );
 };

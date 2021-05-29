@@ -13,10 +13,14 @@ import { ROUTES } from '../routes';
 import { THEME } from '../theme';
 
 import type { StackScreenProps } from '@react-navigation/stack';
+import type { PostType } from '../types';
 
 type StackParamList = {
     [ROUTES.MAIN]: undefined;
-    [ROUTES.POST]: undefined;
+    [ROUTES.POST]: {
+        postId: PostType['id'];
+        date: PostType['date'];
+    };
     [ROUTES.CREATE]: undefined;
     [ROUTES.BOOKED]: undefined;
     [ROUTES.ABOUT]: undefined;
@@ -42,7 +46,11 @@ const AppNavigation: FC = () => {
                 }}
             >
                 <Stack.Screen name={ROUTES.MAIN} component={MainScreen} options={{ title: 'My blog' }} />
-                <Stack.Screen name={ROUTES.POST} component={PostScreen} options={{ title: 'Post 42' }} />
+                <Stack.Screen
+                    name={ROUTES.POST}
+                    component={PostScreen}
+                    options={({ route }) => ({ title: `Post dated ${new Date(route.params.date).toLocaleDateString()}` })}
+                />
                 <Stack.Screen name={ROUTES.CREATE} component={CreateScreen} />
                 <Stack.Screen name={ROUTES.BOOKED} component={BookedScreen} />
                 <Stack.Screen name={ROUTES.ABOUT} component={AboutScreen} />
