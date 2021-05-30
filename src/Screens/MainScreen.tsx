@@ -13,7 +13,7 @@ type PostItemIncludes = { item: PostType };
 type Props = ScreenNavigationProps<ROUTES.MAIN>;
 
 const MainScreen: FC<Props> = ({ navigation }: Props) => {
-    const goToPost = (post: PostType) => navigation.navigate(ROUTES.POST, { postId: post.id, date: post.date });
+    const goToPost = (post: PostType) => navigation.navigate(ROUTES.POST, { postId: post.id, date: post.date, booked: post.booked });
     const renderItem = ({ item }: PostItemIncludes) => <Post post={item} onOpen={goToPost} />;
 
     return (
